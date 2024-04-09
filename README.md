@@ -1,13 +1,13 @@
 # Flask project initialization template for Cookiecutter
 
 ## Overview
-This template is provided to initialize a Python Flask project based on setuptools.
+This template is provided to initialize a Python Flask project and Vue 3 project based on setuptools.
 
 ## Preparation
 The cookiecutter program
 
 ## How to run it
-cookiecutter gh:search5/flask-cookiecutter-basic
+cookiecutter gh:search5/flask-cookiecutter-vue3
 
 ## What the template takes in
 - project_name
