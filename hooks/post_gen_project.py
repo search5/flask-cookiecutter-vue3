@@ -1,7 +1,7 @@
 from pathlib import Path
 
 project_name = Path('{{ cookiecutter.project_name }}')
-vue_project = Path('{{ cookiecutter.vue_project }}')
+vue_project = Path('{{ cookiecutter.project_name }}_web')
 
 templates_dir = project_name / "templates"
 templates_dir.mkdir()
