@@ -11,10 +11,9 @@ public_dir = vue_project / "public"
 src_dir = vue_project / "src"
 assets = src_dir / "assets"
 components = src_dir / "components"
-router = src_dir / "router"
 scss = src_dir / "scss"
 stores = src_dir / "stores"
 views = src_dir / "views"
 
-for item in (public_dir, assets, components, router, scss, stores, views):
+for item in (public_dir, assets, components, scss, stores, views):
     item.mkdir(parents=True)
