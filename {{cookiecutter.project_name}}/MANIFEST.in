@@ -1,2 +1,2 @@
-recursive-include {{cookiecutter.project_name}}/templates *
-recursive-include {{cookiecutter.project_name}}/assets *
+recursive-include src_python/{{cookiecutter.project_name}}/templates *
+recursive-include src_python/{{cookiecutter.project_name}}/assets *

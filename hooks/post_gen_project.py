@@ -1,7 +1,7 @@
 from pathlib import Path
 
 project_name = Path('{{ cookiecutter.project_name }}')
-vue_project = Path('{{ cookiecutter.project_name }}_web')
+vue_project = Path('{{ cookiecutter.project_name }}')
 
 templates_dir = project_name / "templates"
 templates_dir.mkdir()
@@ -15,5 +15,8 @@ scss = src_dir / "scss"
 stores = src_dir / "stores"
 views = src_dir / "views"
 
-for item in (public_dir, assets, components, scss, stores, views):
+# python project directory
+tests = src_dir / "tests"
+
+for item in (public_dir, assets, components, scss, stores, views, tests):
     item.mkdir(parents=True)

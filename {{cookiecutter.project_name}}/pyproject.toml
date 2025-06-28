@@ -1,3 +1,32 @@
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{cookiecutter.project_name}}"
+version = "{{cookiecutter.version}}"
+
+dependencies = [
+    "Flask",
+    {%- if cookiecutter.using_sqlalchemy %}
+    "SQLAlchemy",
+    "Flask-SQLAlchemy",
+    {%- endif %}
+    {%- if cookiecutter.using_cerberus %}
+    "Cerberus",
+    {%- endif %}
+    {%- for item in cookiecutter.dependencies.strip().split(",") if cookiecutter.dependencies %}
+    "{{ item.strip() }}",
+    {%- endfor %}
+]
+
+[project.optional-dependencies]
+develop =
+    {%- if cookiecutter.using_pytest %}
+    pytest
+    coverage
+    pytest-cov
+    {%- endif %}
+    {%- for item in cookiecutter.testing_dependencies.strip().split(",") if cookiecutter.testing_dependencies %}
+    {{ item.strip() }}
+    {%- endfor %}
