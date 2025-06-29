@@ -5,5 +5,5 @@
     "using_pytest": true,
     "using_cerberus": true,
     "dependencies": "",
-    "testing_dependencies": ""
+    "develop_dependencies": ""
 }

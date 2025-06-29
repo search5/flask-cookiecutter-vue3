@@ -27,6 +27,6 @@ develop =
     coverage
     pytest-cov
     {%- endif %}
-    {%- for item in cookiecutter.testing_dependencies.strip().split(",") if cookiecutter.testing_dependencies %}
+    {%- for item in cookiecutter.develop_dependencies.strip().split(",") if cookiecutter.develop_dependencies %}
     {{ item.strip() }}
     {%- endfor %}

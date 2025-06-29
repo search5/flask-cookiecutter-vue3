@@ -1,7 +1,5 @@
-// "production": "cp -r dist/assets ../{{cookiecutter.project_name}}/ && cp -r dist/manifest.json ../{{cookiecutter.project_name}}/lib"
-
 {
-  "name": "{{cookiecutter.project_name}}_web",
+  "name": "{{cookiecutter.project_name}}",
   "version": "0.0.0",
   "private": true,
   "type": "module",

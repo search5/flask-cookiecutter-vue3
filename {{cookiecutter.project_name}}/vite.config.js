@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import fs from 'fs'
-import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,17 +12,16 @@ export default defineConfig({
     vueDevTools(),
     {
       name: 'move-files',
+      generateBundle() {
+        // 빌드 전에 디렉터리 생성
+        fs.mkdirSync('src_python/{{cookiecutter.project_name}}/static', { recursive: true })
+      },
       writeBundle() {
-        // index.html을 별도 디렉터리로 이동
-        if (fs.existsSync('dist/index.html')) {
-          fs.mkdirSync('dist/html', { recursive: true })
-          fs.renameSync('dist/index.html', 'dist/html/index.html')
-        }
-        
         // manifest.json을 별도 디렉터리로 이동
         if (fs.existsSync('dist/.vite/manifest.json')) {
-          fs.mkdirSync('dist/config', { recursive: true })
-          fs.renameSync('dist/.vite/manifest.json', 'dist/config/manifest.json')
+          fs.mkdirSync('src_python/{{cookiecutter.project_name}}/lib', { recursive: true })
+          fs.renameSync('dist/.vite/manifest.json', 'src_python/{{cookiecutter.project_name}}/lib/manifest.json')
+          fs.renameSync('dist/src_python/{{cookiecutter.project_name}}/static', 'src_python/{{cookiecutter.project_name}}/static')
         }
       }
     }
@@ -36,17 +34,19 @@ export default defineConfig({
   build: {
     manifest: true,
     rollupOptions: {
+      input: './src/main.js',
       output: {
         // CSS와 JS 파일을 assets 디렉터리에 통합
         assetFileNames: (assetInfo) => {
           if (/\.(css)$/.test(assetInfo.name)) {
-            return 'assets/[name]-[hash][extname]'
+            return 'src_python/{{cookiecutter.project_name}}/static/[name]-[hash][extname]'
           }
+
           // 기타 asset 파일들 (이미지, 폰트 등)
-          return 'assets/[name]-[hash][extname]'
+          return 'src_python/{{cookiecutter.project_name}}/static/[name]-[hash][extname]'
         },
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js'
+        chunkFileNames: 'src_python/{{cookiecutter.project_name}}/static/[name]-[hash].js',
+        entryFileNames: 'src_python/{{cookiecutter.project_name}}/static/[name]-[hash].js'
       }
     }
   },
