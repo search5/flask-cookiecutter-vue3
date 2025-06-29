@@ -31,3 +31,6 @@ develop = [
     "{{ item.strip() }}",
     {%- endfor %}
 ]
+
+[tool.setuptools]
+package-dir = {"" = "src_python"}
