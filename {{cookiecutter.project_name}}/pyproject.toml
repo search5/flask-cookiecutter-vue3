@@ -23,11 +23,11 @@ dependencies = [
 [project.optional-dependencies]
 develop = [
     {%- if cookiecutter.using_pytest %}
-    pytest
-    coverage
-    pytest-cov
+    pytest,
+    coverage,
+    pytest-cov,
     {%- endif %}
     {%- for item in cookiecutter.develop_dependencies.strip().split(",") if cookiecutter.develop_dependencies %}
-    {{ item.strip() }}
+    {{ item.strip() }},
     {%- endfor %}
 ]
